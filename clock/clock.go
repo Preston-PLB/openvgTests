@@ -15,8 +15,15 @@ func vgfloat(num int) openvg.VGfloat {
 	return openvg.VGfloat(num)
 }
 
+func timeFormat(i int) string {
+	if i < 10 {
+		return "0" + strconv.Itoa(i)
+	}
+	return strconv.Itoa(i)
+}
+
 func genClock(hour, min, sec int) {
-	timeStr := strconv.Itoa(hour) + " : " + strconv.Itoa(min) + " : " + strconv.Itoa(sec)
+	timeStr := timeFormat(hour) + " : " + timeFormat(min) + " : " + timeFormat(sec)
 
 	openvg.FillColor("blue")
 	openvg.Text(100, 100, timeStr, "serif", 56)
